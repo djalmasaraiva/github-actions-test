@@ -30,10 +30,7 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-  validations:
-      runs-on: ubuntu-latest
-      needs: [setup]
-      steps:
+
       # Build and push image to Google Container Registry
       - name: Validating project information
         continue-on-error: true
@@ -41,7 +38,7 @@ jobs:
           result=$(gcloud projects list | grep ${{ github.event.inputs.PROJECT_ID }})
           if [[ -z $result ]] 
           then
-            echo "Project doesn't exist"
+            echo "::error::Filename doesn't match possible files"
           else
             echo "Project exists"
           fi
