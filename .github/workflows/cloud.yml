@@ -33,7 +33,8 @@ jobs:
       uses: 'google-github-actions/auth@v0'
       with:
         credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+        
     # Build and push image to Google Container Registry
-    - name: List
+    - name: Validating project information
       run: |-
-        gcloud projects list
+        gcloud projects list | grep {{ env.PROJECT_ID }}
