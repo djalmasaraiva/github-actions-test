@@ -33,6 +33,9 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@main'
       with:
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY}}
+        project_id: 'ai-people-362119'
+        export_default_credentials: true
+        
         #credentials_json: '${{ secrets.RUN_SA_KEY }}'
 
     # Setup gcloud CLI
