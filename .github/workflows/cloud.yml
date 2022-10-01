@@ -30,7 +30,7 @@ jobs:
 
     # Alternative option - authentication via credentials json
     - id: 'auth'
-      uses: 'google-github-actions/setup-gcloud@master'
+      uses: 'google-github-actions/setup-gcloud@main'
       with:
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY}}
         #credentials_json: '${{ secrets.RUN_SA_KEY }}'
