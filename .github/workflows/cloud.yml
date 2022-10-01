@@ -30,9 +30,9 @@ jobs:
 
     # Alternative option - authentication via credentials json
     - id: 'auth'
-      uses: 'google-github-actions/setup-gcloud@main'
+      uses: 'google-github-actions/setup-gcloud@v0'
       with:
-        service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY}}
+        service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         project_id: 'ai-people-362119'
         export_default_credentials: true
         
