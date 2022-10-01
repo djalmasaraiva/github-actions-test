@@ -49,4 +49,6 @@ jobs:
       run: echo "Hello ${{ github.event.inputs.name }}"
     - name: Send surname
       # run: echo "Hello ${{ github.event.inputs.surname }}"
-      run: exit 1
+      run: |
+        echo "::error::Filename doesn't match possible files"
+        exit 1
