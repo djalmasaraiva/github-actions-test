@@ -14,7 +14,7 @@ on:
 
 jobs:
   setup-build-deploy:
-    name: Setup, Build, and Deploy
+    name: On-Boarding Validations
     runs-on: ubuntu-latest
     env:
       PROJECT_ID: 'ai-people-362119'
