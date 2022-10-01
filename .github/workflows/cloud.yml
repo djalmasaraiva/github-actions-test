@@ -1,7 +1,7 @@
 # Copyright 2019 Google, LLC.
 #
 
-name: GCloud
+name: Network Onboarding validation
 
 on:
   workflow_dispatch:
@@ -16,9 +16,6 @@ jobs:
   setup-build-deploy:
     name: On-Boarding Validations
     runs-on: ubuntu-latest
-    env:
-      PROJECT_ID: 'ai-people-362119'
-      SERVICE_NAME: helloworld-nodejs
 
     # Add "id-token" with the intended permissions.
     permissions:
@@ -26,15 +23,20 @@ jobs:
       id-token: 'write'
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v0'
-      with:
-        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-        
-    # Build and push image to Google Container Registry
-    - name: Validating project information
-      run: |-
-        gcloud projects list | grep ${{ github.event.inputs.PROJECT_ID }}
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
+      # Build and push image to Google Container Registry
+      - name: Validating project information
+        run: |-
+          result=$(gcloud projects list | grep ${{ github.event.inputs.PROJECT_ID }})
+          if [[ -z $result ]] 
+          then
+            echo "Project exist"
+          else
+            echo "Project doesn't exist"
