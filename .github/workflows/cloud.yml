@@ -33,6 +33,7 @@ jobs:
 
       # Build and push image to Google Container Registry
       - name: Validating project information
+        continue-on-error: true
         run: |-
           result=$(gcloud projects list | grep ${{ github.event.inputs.PROJECT_ID }})
           if [[ -z $result ]] 
