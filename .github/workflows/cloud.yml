@@ -40,3 +40,4 @@ jobs:
             echo "Project exist"
           else
             echo "Project doesn't exist"
+          fi
