@@ -37,15 +37,8 @@ jobs:
         run: |-
           project_number=$(gcloud projects list | grep ${{ github.event.inputs.PROJECT_ID }} | awk '{print $3}' | sed -n '1!p')
           
-          echo $project_number
+          if [[ -z $project_number ]] 
+          then
+            echo "::error::The project number is invalid!"
+          fi
         
-        
-        
-        
-          #result=$(gcloud projects list | grep ${{ github.event.inputs.PROJECT_ID }})
-          #if [[ -z $result ]] 
-          #then
-          #  echo "::error::Filename doesn't match possible files"
-          #else
-          #  echo "Project exists"
-          #fi
