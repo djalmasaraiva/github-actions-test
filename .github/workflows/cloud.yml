@@ -36,7 +36,7 @@ jobs:
         #continue-on-error: true
         run: |-
           project_number=$(gcloud projects list | grep ${{ github.event.inputs.PROJECT_ID }} | awk '{print $3}')
-          echo "project_number: $project_number ."
+          echo "project_number: $project_number."
           if [[ -z $project_number ]] 
           then
             echo "::error::The project number is invalid!"
